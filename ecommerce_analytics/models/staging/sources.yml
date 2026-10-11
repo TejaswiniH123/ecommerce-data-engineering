@@ -1,0 +1,22 @@
+
+version: 2
+
+sources:
+  - name: ecommerce
+    description: "Raw e-commerce tables loaded into PostgreSQL."
+    schema: public
+    tables:
+      - name: orders
+        description: "One record per order."
+
+      - name: customers
+        description: "Customer details associated with orders."
+
+      - name: order_items
+        description: "One record per item within an order."
+
+      - name: products
+        description: "Product attributes including source category names."
+
+      - name: product_category_translation
+        description: "Mapping from source category names to English names."

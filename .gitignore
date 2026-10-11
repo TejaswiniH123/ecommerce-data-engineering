@@ -1,0 +1,40 @@
+﻿
+# Python environment and cache
+.venv/
+__pycache__/
+*.py[cod]
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Generated and local data
+data/raw/*
+data/processed/*
+data/rejected/*
+data/incoming/*
+data/archive/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/rejected/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# dbt generated artifacts
+ecommerce_analytics/target/
+ecommerce_analytics/dbt_packages/
+ecommerce_analytics/logs/
+
+# IDE and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Database backups
+*.dump
+*.backup
+*.sql.gz

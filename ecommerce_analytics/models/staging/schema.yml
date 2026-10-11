@@ -1,0 +1,96 @@
+
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Staging view for source orders."
+    columns:
+      - name: order_id
+        description: "Unique identifier for an order."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: source('ecommerce', 'customers')
+                field: customer_id
+
+      - name: order_status
+        data_tests:
+          - not_null
+
+  - name: stg_customers
+    description: "Staging view for source customers."
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_order_items
+    description: "Staging view for individual order items."
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_orders')
+                field: order_id
+
+      - name: order_item_id
+        data_tests:
+          - not_null
+
+  - name: monthly_sales
+    description: "Monthly delivered-order metrics, including item revenue, freight, and average order value."
+    columns:
+      - name: sales_month
+        data_tests:
+          - unique
+          - not_null
+
+      - name: delivered_orders_with_items
+        data_tests:
+          - not_null
+
+      - name: item_gross_sales
+        data_tests:
+          - not_null
+
+
+  - name: stg_products
+    description: "Staging view for product attributes."
+    columns:
+      - name: product_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_product_category_translation
+    description: "Staging view for English product category translations."
+    columns:
+      - name: product_category_name
+        data_tests:
+          - unique
+          - not_null
+
+  - name: category_performance
+    description: "Delivered item sales grouped by product category."
+    columns:
+      - name: category_name
+        data_tests:
+          - unique
+          - not_null
+
+      - name: item_gross_sales
+        data_tests:
+          - not_null
+
+      - name: revenue_share_percentage
+        data_tests:
+          - not_null
