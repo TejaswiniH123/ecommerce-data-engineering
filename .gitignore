@@ -15,6 +15,7 @@ data/processed/*
 data/rejected/*
 data/incoming/*
 data/archive/*
+data/test/
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/rejected/.gitkeep

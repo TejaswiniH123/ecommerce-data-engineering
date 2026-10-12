@@ -3,3 +3,4 @@ python-dotenv
 pytest
 dbt-core==1.12.5
 dbt-postgres==1.11.0
+pyspark==3.5.6
